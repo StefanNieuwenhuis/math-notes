@@ -10,6 +10,13 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-      - name: Show working directory
-        shell: bash
-        run: echo $WORKING_DIRECTORY
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+        
