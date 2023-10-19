@@ -10,6 +10,7 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
+          docker_image: ghcr.io/xu-cheng/texlive-small:latest
       - name: Create Release
         uses: actions/create-release@v1
         env:
