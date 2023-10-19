@@ -1,5 +1,30 @@
 \documentclass[a4paper]{article}
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+\newcommand*\textfrac[2]{
+  \frac{\text{#1}}{\text{#2}}
+}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\title{Probability}
+\author{Stefan Nieuwenhuis}
+\date{October 2023}
 
 \begin{document}
-Hello World
+
+\maketitle
+
+\section{Introduction}
+
+\section{Naive definition of probability}
+
+\begin{definition}[Naive definition of probability]
+Let $A$ be an event for an experiment with a finite sample space $S$. The naive probability of $A$ is
+
+$$P_{naive}(A)=\frac{|A|}{|S|}=\textfrac{number of outcomes favorable to A}{total number of outcomes in S}$$
+\end{definition}
+
 \end{document}
