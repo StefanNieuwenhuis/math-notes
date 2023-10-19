@@ -10,8 +10,26 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v3
+  
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: PDF
-          path: main.pdf
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload assets
+        id: upload_assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./pdf/main.pdf
+          asset_name: main.pdf
+          asset_content_type: pdf
