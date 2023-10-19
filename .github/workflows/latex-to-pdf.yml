@@ -11,7 +11,14 @@ jobs:
         with:
           root_file: main.tex
           docker_image: ghcr.io/xu-cheng/texlive-small:latest
-      - name: Check git status
-        run: |
-          git status
-        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: main.pdf
+      - name: Download to repository
+        uses: actions/download-artifact@v3
+        with:
+          name: PDF
+      - name: Display structure of downloaded files
+        run: ls -R
