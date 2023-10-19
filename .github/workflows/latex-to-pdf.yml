@@ -10,6 +10,11 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: main.pdf
   
   create-release:
     runs-on: ubuntu-latest
